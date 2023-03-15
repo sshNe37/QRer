@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block title %}
+こんにちは
+{% endblock title %}
+
+{% block content %}
+<h2>こんにちは</h2>
+
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h4 class="card-title">専用QRコード表示</h4>
+                <p class="card-text">ログインしていると出席登録の専用QRコードを表示することができます。</p>
+                <a href='{% url "QRer:index" %}' class="btn btn-outline-info">こちらから</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h4 class="card-title">ご意見・ご感想</h4>
+                <p class="card-text">私たちが作成しているシステムやこのWebサイトなどについてのご意見・ご感想を送っていただけると幸いです。</p>
+                <a href='{% url "QRer:contact" %}' class="btn btn-outline-info">こちらから</a>
+            </div>
+        </div>
+    </div>
+
+    {% if user.is_staff %}
+    <div class="col-md-6">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h4 class="card-title">専用QRコード生成</h4>
+                <p class="card-text">【教員向け】学籍番号を入力して生徒の専用QRコードを生成することができます(通常用のみ)</p>
+                <a href='{% url "QRer:maker" %}' class="btn btn-outline-info">こちらから</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h4 class="card-title">出席者データ確認</h4>
+                <p class="card-text">【教員向け】Googleスプレッドシートの出席者データを参照できます</p>
+                <a href='{% url "QRer:index" %}' class="btn btn-outline-info">こちらから</a>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+
+{% endblock content %}
