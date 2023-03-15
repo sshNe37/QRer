@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+<section class='common-form'>
+{% block content %}
+<h1>ログイン</h1>
+
+    {% if form.errors %}
+        <p class='error-msg'>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    
+        {% if customuser.is_authenticated %}
+            <p>{{ user }}でログイン中です</p>
+       
+        {% else %}
+            <form action='{% url "QRer:login" %}' method='post'>
+                {% csrf_token %}
+                <input type='hidden' name='next' class="form-control" value='{{ next }}'/>
+                {{ form.as_p }}
+                <button type='submit' class="btn btn-outline-info">Login</button>
+            </form>
+        {% endif %}
+
+</section>
+{% endblock %}
