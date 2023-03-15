@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-eo1#7clnw5r3+buwmpve8#@6wn3n5bpmr5t@^hucx_rmnfzm_c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['.pythonanywhere.com']
+ALLOWED_HOSTS = ['.pythonanywhere.com', 'sshKT.pythonanywhere.com']
 
 
 # Application definition
@@ -130,3 +130,6 @@ LOGIN_REDIRECT_URL = '/QRer'
 LOGOUT_REDIRECT_URL = '/QRer'
 
 AUTH_USER_MODEL = 'QRer.CustomUser'
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
