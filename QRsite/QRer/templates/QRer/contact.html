@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+こんにちは
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="text-center mb-5">
+        <h2 class="mb-5 mt-3">ご意見・ご感想</h2>
+<form method="POST" class="mx-3 mx-md-5">
+    {% csrf_token %}
+	{% for item in form %}
+    <div class="form-group mb-3 fs-5">
+        <label for="{{item.id_for_label}}">{{item.label}}</label>
+        {% if item.name == "content" %}
+        <textarea class="form-control" {% if item.field.required %}required{% endif %} name="{{item.name}}" id="{{item.id_for_label}}" rows="3"></textarea>
+        {% else %}
+        <input type="{{item.field.widget.input_type}}" class="form-control" 
+            {% if item.field.required %}required{% endif %} 
+            name="{{item.name}}" id="{{item.id_for_label}}">
+        {% endif %}
+    </div>
+    {% endfor %}
+    <div class="py-3">
+        <button class="btn btn-secondary btn-lg w-100" type="submit">送信</button>
+    </div>
+</form>
+</div>
+</div>
+{% endblock content %}
