@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-eo1#7clnw5r3+buwmpve8#@6wn3n5bpmr5t@^hucx_rmnfzm_c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.pythonanywhere.com', 'sshKT.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com', 'sshKT.pythonanywhere.com']
 
 
 # Application definition
@@ -133,3 +133,7 @@ AUTH_USER_MODEL = 'QRer.CustomUser'
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR , 'static')
+MEDIA_ROOT = Path(BASE_DIR / 'media')
